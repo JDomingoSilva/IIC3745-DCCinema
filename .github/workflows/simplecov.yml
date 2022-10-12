@@ -38,13 +38,7 @@ jobs:
         run: bundle install
       - name: Setup Database
         run: |
-          exec rails db:create
           bundle exec rails db:create
-          bundle exec rails db:migrate
-        env:
-          POSTGRES_DB: proyecto-Testing_development
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_USER: postgres
       - name: Run simplecov
         run:
           bundle exec rails test
