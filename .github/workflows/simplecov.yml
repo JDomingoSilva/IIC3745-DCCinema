@@ -31,18 +31,16 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1.2'
+          bundler-cache: true
           
       - name: Install PostgreSQL
         run: sudo apt-get -yqq install libpq-dev
+        
       - name: Run bundle install
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
-      - name: Run yarn commands
-        run: |
-          yarn install
-          yarn build
-          yarn build:css
+          
       - name: Setup Database
         env:
           RAILS_ENV: test
@@ -52,7 +50,7 @@ jobs:
           POSTGRES_DB: postgres
         run: bin/rails db:create db:schema:load
 
-      - name: Build and test with rspec
+      - name: Build, test, and find coverage percent
         env:
           RAILS_ENV: test
           POSTGRES_HOST: localhost
