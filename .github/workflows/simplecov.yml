@@ -34,8 +34,9 @@ jobs:
           bundler-cache: true
       - name: Setup Database
         run: |
-          cp config/database.yml
-          bundle exec rails db:setup
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          bundle exec rails db:seed
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
