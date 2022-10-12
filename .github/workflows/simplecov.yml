@@ -32,9 +32,14 @@ jobs:
         with:
           ruby-version: '3.1.2'
           bundler-cache: true
+      - name: Install library for postgres
+        run: sudo apt-get install libpq-dev
+      - name: Install dependencies
+        run: bundle install
       - name: Setup Database
         run: |
           bundle exec rails db:create
+          bundle exec rails db:migrate
         env:
           POSTGRES_DB: proyecto-Testing_development
           POSTGRES_PASSWORD: postgres
