@@ -16,7 +16,7 @@ jobs:
         env:
           POSTGRES_USER: postgres        
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: proyecto-Testing_test
+          POSTGRES_DB: postgres
         ports:
           - 5432:5432
         options: >-
@@ -47,8 +47,8 @@ jobs:
           POSTGRES_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: proyecto-Testing_test
-        run: bundle exec rails db:create db:schema:load
+          POSTGRES_DB: postgres
+        run: bundle exec rails db:migrate RAILS_ENV=test
 
       - name: Build, test, and find coverage percent
         env:
@@ -56,6 +56,6 @@ jobs:
           POSTGRES_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: proyecto-Testing_test
+          POSTGRES_DB: postgres
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bundle exec rails test
