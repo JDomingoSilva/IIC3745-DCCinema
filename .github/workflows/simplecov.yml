@@ -34,4 +34,7 @@ jobs:
           bundler-cache: true
       - name: Run simplecov
         run:
+          rails db:create
+          rails db:migrate
+          rails db:seed
           bundle exec rails test
