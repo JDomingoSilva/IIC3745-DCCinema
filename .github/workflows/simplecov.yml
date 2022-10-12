@@ -32,6 +32,12 @@ jobs:
         with:
           ruby-version: '3.1.2'
           bundler-cache: true
+      - name: Setup Database
+        run:
+          bundle exec rails db:setup
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
       - name: Run simplecov
         run:
           bundle exec rails test
