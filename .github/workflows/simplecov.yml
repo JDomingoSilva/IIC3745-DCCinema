@@ -47,8 +47,10 @@ jobs:
           POSTGRES_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: proyecto-Testing
-        run: bundle exec rails db:create db:schema:load
+          POSTGRES_DB: postgres
+        run: |
+          cp config/database.yml.github-actions config/database.yml
+          bundle exec rails db:create db:schema:load
 
       - name: Build, test, and find coverage percent
         env:
@@ -56,6 +58,6 @@ jobs:
           POSTGRES_HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: proyecto-Testing
+          POSTGRES_DB: postgres
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bundle exec rails test
