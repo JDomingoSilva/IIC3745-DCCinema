@@ -14,7 +14,7 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: postgres        
+          POSTGRES_DB: proyecto-Testing_test        
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
         ports:
@@ -38,7 +38,7 @@ jobs:
           bundle exec rails db:migrate
           bundle exec rails db:seed
         env:
-          POSTGRES_DB: postgres 
+          POSTGRES_DB: proyecto-Testing_test 
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
       - name: Run simplecov
