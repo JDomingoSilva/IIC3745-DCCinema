@@ -48,7 +48,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
-        run: bundle exec bin/rails db:create db:schema:load
+        run: bundle exec rails db:create db:schema:load
 
       - name: Build, test, and find coverage percent
         env:
