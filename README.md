@@ -1,12 +1,10 @@
 # Proyecto DCCinema Grupo 43
 #### Entrega: 1
-#### Url Heroku:
+#### Url Heroku: https://dccinema-43.herokuapp.com/
 
 
 ### Logros
- Dejar explicito lo que no lograron hacer de la entrega o si lograron hacer todo lo pedido
+ Todo lo pedido; actions para rubocop, los tests y simplecov. Subido a heroku y eso.
 
 ### Consideraciones generales para la correcion
-Cualquier detalle que consideren que puede ser útil para el corrector. Ej:
-bugs detectados, pasos adicionales de setup, cosas que no sean tan claras relacionadas con el uso de su aplicacion, entre otros
 
