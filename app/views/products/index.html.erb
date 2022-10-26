@@ -9,9 +9,13 @@
 <form class="filter_form">
  <%= select("filter", "type", %w[All Comestible Souvenir Bebestible]) %>
 <input type="submit" value="Filter" />
+<br>
 <div id="products">
   <% @products.each do |product| %>
+  <div>
+  -----------------------------------
     <%= render product%>
+  </div>
     <p>
       <%= link_to "Show this product", product_url(product) %>
     </p>
