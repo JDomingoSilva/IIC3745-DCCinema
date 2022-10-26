@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
+# souvenir config
 class Souvenir < Product
   validates :weith, presence: false
   validates :volum, presence: false
-  def set_type # If you don't implement this method, an error will be raised
+  def set_type
     self.type = 'Souvenir'
   end
 end
-  
