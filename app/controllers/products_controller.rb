@@ -2,6 +2,7 @@
 
 # Controlador para manejar lo relacionado a la creacion de productos
 class ProductsController < ApplicationController
+  PRODUCTS_TYPES = %w[Comestible Souvenir Bebestible].freeze
   before_action :set_product, only: %i[show edit update destroy]
 
   # GET /products or /products.json
@@ -61,17 +62,21 @@ class ProductsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def product_params
-    @key = :product
-    @permit_params = :name, :cost, :volum, :weight, :type
-    if params.key?('bebestible')
+    if params.key?(:product)
+      @key = :product
+      @permit_params = :name, :cost, :volum, :weight
+      if params[:product].key?(:type) && PRODUCTS_TYPES.include?(params[:product][:type])
+        @permit_params.append(:type)
+      end
+    elsif params.key?(:bebestible)
       @key = :bebestible
-      @permit_params = :name, :cost, :volum
-    elsif params.key?('comestible')
+      @permit_params = :name, :cost, :volum, :type
+    elsif params.key?(:comestible)
       @key = :comestible
-      @permit_params = :name, :cost, :weight
-    elsif params.key?('souvenir')
+      @permit_params = :name, :cost, :weight, :type
+    elsif params.key?(:souvenir)
       @key = :souvenir
-      @permit_params = :name, :cost
+      @permit_params = :name, :cost, :type
     end
     params.require(@key).permit(@permit_params)
   end
