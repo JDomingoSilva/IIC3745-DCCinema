@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = Product.all
+    @bebestible = Bebestible.all
+    @comestible = Comestible.all
+    @souvenir = Souvenir.all
   end
 
   # GET /products/1 or /products/1.json
