@@ -12,9 +12,6 @@ class ProductsController < ApplicationController
        (params[:filter].key?(:type) && PRODUCTS_TYPES.include?(params[:filter][:type]))
       @products = @products.where(type: params[:filter][:type])
     end
-    @bebestible = Bebestible.all
-    @comestible = Comestible.all
-    @souvenir = Souvenir.all
   end
 
   # GET /products/1 or /products/1.json
