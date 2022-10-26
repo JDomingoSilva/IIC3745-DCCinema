@@ -8,7 +8,8 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = Product.all
-    if !params.nil? && params.key?(:filter) && (params[:filter].key?(:type) && PRODUCTS_TYPES.include?(params[:filter][:type]))
+    if !params.nil? && params.key?(:filter) &&
+       (params[:filter].key?(:type) && PRODUCTS_TYPES.include?(params[:filter][:type]))
       @products = @products.where(type: params[:filter][:type])
     end
     @bebestible = Bebestible.all
