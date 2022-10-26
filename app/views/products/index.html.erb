@@ -1,28 +1,19 @@
 <p style="color: green"><%= notice %></p>
+<div>
+<%= link_to "New product", new_product_path %>
+</div>
+<div>
+<%= link_to "Volver", home_path %>
+</div>
 <h1>Products</h1>
 <form class="filter_form">
- <%= select("filter", "type", @products.collect(&:type).uniq) %>
+ <%= select("filter", "type", %w[All Comestible Souvenir Bebestible]) %>
 <input type="submit" value="Filter" />
 <div id="products">
-<%if !params.nil? && params.key?(:filter)
-  if params[:filter].key?(:type) && params[:filter][:type] == "Bebestible"
-    @products = @bebestible
-  elsif params[:filter].key?(:type) && params[:filter][:type]  == "Comestible"
-    @products = @comestible
-  elsif params[:filter].key?(:type) && params[:filter][:type]  == "Souvenir"
-    @products = @souvenir
-  end
-end%>
   <% @products.each do |product| %>
     <%= render product%>
     <p>
       <%= link_to "Show this product", product_url(product) %>
     </p>
   <% end %>
-</div>
-<div>
-<%= link_to "New product", new_product_path %>
-</div>
-<div>
-<%= link_to "Volver", home_path %>
 </div>
