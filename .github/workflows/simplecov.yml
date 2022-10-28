@@ -2,9 +2,9 @@ name: simplecov
 
 on:
   push:
-    branches: [ "main", "E1" ]
+    branches: [ "main", "E1", "E2" ]
   pull_request:
-    branches: [ "main", "E1" ]
+    branches: [ "main", "E1", "E2" ]
 
 jobs:
   simplecov:

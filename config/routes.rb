@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :products
+  delete 'products/:id', to: 'product#destroy', as: 'bebestible_path'
+  get 'products/:id', to: 'product#show', as: 'bebestible'
+  delete 'products/:id', to: 'product#destroy', as: 'comestible_path'
+  get 'products/:id', to: 'product#show', as: 'comestible'
+  delete 'products/:id', to: 'product#destroy', as: 'souvenir_path'
+  get 'products/:id', to: 'product#show', as: 'souvenir'
   get 'reservas/new/:sala/:fecha/:horario', to: 'reservas#new', as: 'new_reserva'
   post 'reservas/new/:sala/:fecha/:horario', to: 'reservas#create'
   get 'movie/new'
