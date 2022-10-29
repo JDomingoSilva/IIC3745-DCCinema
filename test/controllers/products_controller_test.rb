@@ -13,6 +13,23 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
                                type: 'Souvenir')
   end
 
+  test 'should get  bebestible product' do
+    get format('/products'), params: { filter: { type: 'Bebestible' } }
+    assert_response :success
+  end
+  test 'should check  comestible product' do
+    get format('/products'), params: { comestible: { type: 'Comestible' } }
+    assert_response :success
+  end
+  test 'should check  Bebestible product' do
+    get format('/products'), params: { bebestible: { type: 'Bebestible' } }
+    assert_response :success
+  end
+  test 'should get  Souvenir product' do
+    get format('/products'), params: { souvenir: { type: 'Souvenir' } }
+    assert_response :success
+  end
+
   test 'should get index' do
     get products_url
     assert_response :success
