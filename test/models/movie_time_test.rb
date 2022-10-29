@@ -29,6 +29,15 @@ class MovieTimeTest < ActiveSupport::TestCase
     assert_not movie_time.valid?
   end
 
+  test 'MovieTime con hora inválida' do
+    movie_time = MovieTime.new(room: 3,
+                               time: 'TARDECITO',
+                               date_start: Date.new(2022, 11, 20),
+                               date_end: Date.new(2023, 11, 22),
+                               movie_id: @movie.id)
+    assert_not movie_time.valid?
+  end
+
   test 'MovieTime sin sala' do
     movie_time = MovieTime.new(date_start: Date.new(2022, 11, 20),
                                date_end: Date.new(2023, 11, 22),
