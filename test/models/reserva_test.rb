@@ -21,4 +21,39 @@ class ReservaTest < ActiveSupport::TestCase
                              name: 'Pedro')
     assert_equal(true, reserva.valid?)
   end
+
+  test 'Reserva sin sala' do
+    reserva = Reserva.create(fecha: Date.new(2022, 10, 11), asiento: 10, horario: 'TANDA',
+                             name: 'Pedro')
+    assert_not reserva.valid?
+  end
+
+  test 'Reserva sin fecha' do
+    reserva = Reserva.create(sala: 5, asiento: 10, horario: 'TANDA',
+                             name: 'Pedro')
+    assert_not reserva.valid?
+  end
+
+  test 'Reserva sin pelicula en esa fecha' do
+    reserva = Reserva.create(sala: 5, fecha: Date.new(2022, 10, 13), asiento: 10, horario: 'TANDA',
+                             name: 'Pedro')
+    assert_not reserva.valid?
+  end
+
+  test 'Reserva sin asiento' do
+    reserva = Reserva.create(sala: 5, fecha: Date.new(2022, 10, 11), horario: 'TANDA',
+                             name: 'Pedro')
+    assert_not reserva.valid?
+  end
+
+  test 'Reserva sin hora' do
+    reserva = Reserva.create(sala: 5, fecha: Date.new(2022, 10, 11), asiento: 10,
+                             name: 'Pedro')
+    assert_not reserva.valid?
+  end
+
+  test 'Reserva sin nombre' do
+    reserva = Reserva.create(sala: 5, fecha: Date.new(2022, 10, 11), asiento: 10, horario: 'TANDA')
+    assert_not reserva.valid?
+  end
 end
