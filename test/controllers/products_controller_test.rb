@@ -30,6 +30,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should not create  new product' do
+    assert_difference('Product.count', 0) do
+      post format('/products'), params: { product: { type: 'invalidtype' } }
+    end
+    assert_redirected_to products_url
+  end
+
   test 'should get index' do
     get products_url
     assert_response :success
@@ -65,6 +72,34 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
           params: { product: { cost: @product.cost, name: @product.name, type: 'Comestible',
                                volum: @product.volum, weight: @product.weight } }
     assert_redirected_to product_url(@product)
+  end
+
+  test 'should not update product' do
+    put product_url(@bebestible),
+        params: { product: { cost: -1, name: @bebestible.name, type: @bebestible.type,
+                             volum: @bebestible.volum, weight: @bebestible.weight } }
+    assert_redirected_to products_url
+  end
+
+  test 'should check bebestible params' do
+    patch product_url(@bebestible),
+          params: { bebestible: { cost: @bebestible.cost, name: @bebestible.name,
+                                  type: @bebestible.type, volum: @bebestible.volum } }
+    assert_redirected_to product_url(@bebestible)
+  end
+
+  test 'should check comestible params' do
+    patch product_url(@comestible),
+          params: { comestible: { cost: @comestible.cost, name: @comestible.name,
+                                  type: @comestible.type, weight: @comestible.weight } }
+    assert_redirected_to product_url(@comestible)
+  end
+
+  test 'should check souvenir params' do
+    patch product_url(@souvenir),
+          params: { souvenir: { cost: @souvenir.cost, name: @souvenir.name,
+                                type: @souvenir.type } }
+    assert_redirected_to product_url(@souvenir)
   end
 
   test 'should destroy product' do
