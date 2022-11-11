@@ -11,4 +11,9 @@ class MovieTest < ActiveSupport::TestCase
     movie = Movie.create(title: 'Matrix')
     assert_equal(true, movie.valid?)
   end
+
+  test 'Movie sin título' do
+    movie = Movie.create
+    assert_not movie.valid?
+  end
 end
