@@ -36,7 +36,8 @@ class MovieTimeTest < ActiveSupport::TestCase
                                time: 'TARDECITO',
                                date_start: Date.new(2022, 11, 20),
                                date_end: Date.new(2023, 11, 22),
-                               movie_id: @movie.id)
+                               movie_id: @movie.id,
+                               place: 'Santiago', language: 'ESPAÑOL')
     assert_not movie_time.valid?
   end
 
@@ -44,7 +45,8 @@ class MovieTimeTest < ActiveSupport::TestCase
     movie_time = MovieTime.new(date_start: Date.new(2022, 11, 20),
                                date_end: Date.new(2023, 11, 22),
                                time: 'TANDA',
-                               movie_id: @movie.id)
+                               movie_id: @movie.id,
+                               place: 'Santiago', language: 'ESPAÑOL')
     assert_not movie_time.valid?
   end
 
@@ -52,7 +54,8 @@ class MovieTimeTest < ActiveSupport::TestCase
     movie_time = MovieTime.new(room: 3,
                                date_end: Date.new(2023, 11, 22),
                                time: 'TANDA',
-                               movie_id: @movie.id)
+                               movie_id: @movie.id,
+                               place: 'Santiago', language: 'ESPAÑOL')
     assert_not movie_time.valid?
   end
 
@@ -60,7 +63,8 @@ class MovieTimeTest < ActiveSupport::TestCase
     movie_time = MovieTime.new(room: 3,
                                date_start: Date.new(2022, 11, 20),
                                time: 'TANDA',
-                               movie_id: @movie.id)
+                               movie_id: @movie.id,
+                               place: 'Santiago', language: 'ESPAÑOL')
     assert_not movie_time.valid?
   end
 
@@ -77,7 +81,8 @@ class MovieTimeTest < ActiveSupport::TestCase
                                date_start: Date.new(2022, 11, 22),
                                date_end: Date.new(2022, 11, 20),
                                time: 'TANDA',
-                               movie_id: @movie.id)
+                               movie_id: @movie.id,
+                               place: 'Santiago', language: 'ESPAÑOL')
     assert_not movie_time.valid?
   end
 
@@ -86,14 +91,34 @@ class MovieTimeTest < ActiveSupport::TestCase
                                date_start: Date.new(2022, 11, 22),
                                date_end: Date.new(2023, 11, 20),
                                time: 'TANDA',
-                               movie_id: @movie.id)
+                               movie_id: @movie.id,
+                               place: 'Santiago', language: 'ESPAÑOL')
     movie_time.save
     movie2 = Movie.create(title: 'Jujutsu Kaisen 0', rated_adult: false)
     movie_time2 = MovieTime.new(room: 3,
                                 date_start: Date.new(2022, 11, 22),
                                 date_end: Date.new(2023, 11, 20),
                                 time: 'TANDA',
-                                movie_id: movie2.id)
+                                movie_id: movie2.id,
+                                place: 'Santiago', language: 'ESPAÑOL')
+    assert_not movie_time2.valid?
+  end
+
+  test ' MovieTime con horario ocupado' do
+    movie_time = MovieTime.new(room: 3,
+                               date_start: Date.new(2022, 11, 22),
+                               date_end: Date.new(2023, 11, 20),
+                               time: 'TANDA',
+                               movie_id: @movie.id,
+                               place: 'Santiago', language: 'ESPAÑOL')
+    movie_time.save
+
+    movie_time2 = MovieTime.new(room: 3,
+                                date_start: Date.new(2022, 11, 22),
+                                date_end: Date.new(2023, 12, 20),
+                                time: 'TANDA',
+                                movie_id: @movie.id,
+                                place: 'Santiago', language: 'ESPAÑOL')
     assert_not movie_time2.valid?
   end
 end
