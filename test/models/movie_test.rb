@@ -7,8 +7,13 @@ class MovieTest < ActiveSupport::TestCase
     Movie.destroy_all
   end
 
-  test 'Movie con parametros validos' do
-    movie = Movie.create(title: 'Matrix')
+  test 'Movie adulta con parametros validos' do
+    movie = Movie.create(title: 'Matrix', rated_adult: true)
+    assert_equal(true, movie.valid?)
+  end
+
+  test 'Movie para todas las edades con parametros validos' do
+    movie = Movie.create(title: 'Matrix', rated_adult: false)
     assert_equal(true, movie.valid?)
   end
 

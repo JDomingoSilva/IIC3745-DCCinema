@@ -4,7 +4,7 @@ require 'test_helper'
 
 class MovieTimeTest < ActiveSupport::TestCase
   def setup
-    @movie = Movie.create(title: 'Taken')
+    @movie = Movie.create(title: 'Taken', rated_adult: false)
   end
 
   def teardown
@@ -86,7 +86,7 @@ class MovieTimeTest < ActiveSupport::TestCase
                                time: 'TANDA',
                                movie_id: @movie.id)
     movie_time.save
-    movie2 = Movie.create(title: 'Jujutsu Kaisen 0')
+    movie2 = Movie.create(title: 'Jujutsu Kaisen 0', rated_adult: false)
     movie_time2 = MovieTime.new(room: 3,
                                 date_start: Date.new(2022, 11, 22),
                                 date_end: Date.new(2023, 11, 20),
