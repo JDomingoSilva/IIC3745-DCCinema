@@ -33,6 +33,14 @@
         </div>
         <div class="field is-horizontal">
           <div class="field-label is-medium">
+            <%= form.label :rated_adult , 'Rating de edad:'%>
+          </div>
+          <%= form.select :rated_adult, options_for_select(
+            { 'Para todo público' => false, 'Para mayores de 18 años' => true }, false), 
+            class: 'input', required: 'required' %>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
             <%= form.label :Imagen, 'Imagen:' %>
           </div>
           <%= form.file_field :image , class:"input", accept: 'image/*'%>
@@ -56,6 +64,13 @@
         </div>
         <div class="field is-horizontal">
           <div class="field-label is-medium">
+            <%= form.label :query, "Idioma: ", class: 'label' %>
+          </div>
+          <%= form.select :language, options_for_select(['ESPAÑOL', 'INGLÉS'], 'ESPAÑOL'), 
+            class: 'input', required: 'required' %>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
             <%= form.label :time, "Horario:", class:'label' %>
           </div>
           <div class="select is-fullwidth">
@@ -73,6 +88,13 @@
             <%= form.label :date_end, "Día Termino: ", class:'label' %>
           </div>
           <%= form.date_field :date_end , class: 'input', min: Date.today%>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :query, "Sucursal: ", class: 'label' %>
+          </div>
+          <%= form.select :place, options_for_select(['Santiago', 'Regional'], 'Santiago'), 
+            class: 'input', required: 'required' %>
         </div>
         <div class="field is-horizontal">
           <div class="field-label is-medium">
