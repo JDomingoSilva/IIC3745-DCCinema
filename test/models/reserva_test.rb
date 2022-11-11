@@ -7,7 +7,8 @@ class ReservaTest < ActiveSupport::TestCase
     movie = Movie.create(title: 'Matrix', rated_adult: false)
     MovieTime.create(room: 5, date_start: Date.new(2022, 10, 10),
                      date_end: Date.new(2022, 10, 12),
-                     time: 'TANDA', movie_id: movie.id)
+                     time: 'TANDA', movie_id: movie.id,
+                     place: 'Santiago', language: 'ESPAÑOL')
   end
 
   def teardown

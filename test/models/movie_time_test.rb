@@ -17,7 +17,8 @@ class MovieTimeTest < ActiveSupport::TestCase
                                date_start: Date.new(2022, 11, 20),
                                date_end: Date.new(2023, 11, 22),
                                time: 'TANDA',
-                               movie_id: @movie.id)
+                               movie_id: @movie.id,
+                               place: 'Santiago', language: 'ESPAÑOL')
     assert_equal(true, movie_time.valid?)
   end
 
@@ -25,7 +26,8 @@ class MovieTimeTest < ActiveSupport::TestCase
     movie_time = MovieTime.new(room: 3,
                                date_start: Date.new(2022, 11, 20),
                                date_end: Date.new(2023, 11, 22),
-                               movie_id: @movie.id)
+                               movie_id: @movie.id,
+                               place: 'Santiago', language: 'ESPAÑOL')
     assert_not movie_time.valid?
   end
 
