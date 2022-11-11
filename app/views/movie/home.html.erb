@@ -19,13 +19,37 @@
     <div class="column is-one-fifth"></div>
     <div class="column is-one-quarter has-text-centered">
       <p class="title is-5">Crear una reserva</p>
-      <%= form_with url: movies_by_date_path, method: :get do |form| %>
+      <%= form_with url: movies_by_filters_path, method: :get do |form| %>
         <div class="field is-horizontal">
           <div class="field-label is-medium">
             <%= form.label :query, "Día: ", class: 'label' %>
           </div>
           <%= form.date_field :date , class: 'input', required: 'required', min: Date.today%>
         </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :query, "Edad: ", class: 'label' %>
+          </div>
+          <%= form.number_field :age, class: 'input', required: 'required', min: 1%>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :query, "Sucursal: ", class: 'label' %>
+          </div>
+          <%= form.select :place, options_for_select(['Santiago', 'Regional'], 'Santiago'), 
+            class: 'input', required: 'required' %>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-medium">
+            <%= form.label :query, "Idioma: ", class: 'label' %>
+          </div>
+          <%= form.select :language, options_for_select(['ESPAÑOL', 'INGLÉS'], 'ESPAÑOL'), 
+            class: 'input', required: 'required' %>
+        </div>
+
         <%= form.submit "Buscar" , class: "button is-rounded is-link"%>
       <% end %>
 

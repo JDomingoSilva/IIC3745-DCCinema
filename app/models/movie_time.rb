@@ -12,6 +12,8 @@ class MovieTime < ApplicationRecord
   validates :date_start, presence: { message: 'Falta la fecha inicial' }
   validates :date_end, presence: { message: 'Falta la fecha final' }
   validates :movie_id, presence: { message: 'Falta elegir una pelicula' }
+  validates :place, presence: { message: 'Falta definir sucursal' }
+  validates :language, presence: { message: 'Falta definir el lenguaje de la emisión' }
   validate :validate_date
 
   def validate_date

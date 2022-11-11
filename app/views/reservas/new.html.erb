@@ -24,7 +24,7 @@
     </div>
 
         <%=link_to "Pagina principal", home_path, class: "button is-rounded is-link" %>
-        <%=link_to "Volver a Cartelera", movies_by_date_path(date: params[:fecha]), class: "button is-rounded is-link" %>
+        <%=link_to "Volver a Cartelera", movies_by_filters_path(date: params[:fecha]), class: "button is-rounded is-link" %>
   </div>
   <div class="column ">
     <div id='svg_sala'></div>
