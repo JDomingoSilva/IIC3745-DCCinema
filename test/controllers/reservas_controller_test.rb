@@ -9,10 +9,11 @@ class ReservasControllerTest < ActionDispatch::IntegrationTest
                      date_end: Date.new(2010, 11, 12), time: 'TANDA',
                      movie_id: movie.id,
                      place: 'Santiago', language: 'ESPAÑOL')
+    Reserva.create(name: 'reserva', asiento: 'A-5', sala: '5', fecha: '2001-11-11',
+                   horario: 'TANDA')
   end
 
   def teardown
-    Reserva.destroy_all
     MovieTime.destroy_all
     Movie.destroy_all
   end
@@ -53,5 +54,9 @@ class ReservasControllerTest < ActionDispatch::IntegrationTest
       post new_reserva_url(5, '2000-11-12', 'TANDA'),
            params: { reservation_seats: 'ZZ-3', name: 'Diego' }
     end
+  end
+  test 'Mostrar las reservas' do
+    get(new_reserva_url(5, '2000-11-11', 'TANDA'))
+    assert_response :success
   end
 end

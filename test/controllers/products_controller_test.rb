@@ -3,6 +3,12 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
+  # def teardown
+  #   Product.destroy_all
+  #   Reserva.destroy_all
+  #   MovieTime.destroy_all
+  #   Movie.destroy_all
+  # end
   setup do
     @product = products(:one)
     @comestible = Product.create(cost: 12, name: 'ProductoTestComestible',

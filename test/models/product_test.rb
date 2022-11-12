@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
-  setup do
+  def setup
     @product = products(:one)
     @comestible = Product.create(cost: 12, name: 'ProductoTestComestible',
                                  type: 'Comestible', weight: 20)
@@ -11,6 +11,11 @@ class ProductTest < ActiveSupport::TestCase
                                  type: 'Bebestible', volum: 20)
     @souvenir = Product.create(cost: 14, name: 'ProductoTestSouvenir',
                                type: 'Souvenir')
+  end
+
+  def teardown
+    MovieTime.destroy_all
+    Movie.destroy_all
   end
 
   test 'Get Comestible type' do

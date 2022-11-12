@@ -12,6 +12,7 @@ class ReservaTest < ActiveSupport::TestCase
   end
 
   def teardown
+    Product.destroy_all
     Reserva.destroy_all
     MovieTime.destroy_all
     Movie.destroy_all
@@ -43,12 +44,6 @@ class ReservaTest < ActiveSupport::TestCase
 
   test 'Reserva sin asiento' do
     reserva = Reserva.create(sala: 5, fecha: Date.new(2022, 10, 11), horario: 'TANDA',
-                             name: 'Pedro')
-    assert_not reserva.valid?
-  end
-
-  test 'Reserva sin hora' do
-    reserva = Reserva.create(sala: 5, fecha: Date.new(2022, 10, 11), asiento: 10,
                              name: 'Pedro')
     assert_not reserva.valid?
   end
