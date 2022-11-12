@@ -4,11 +4,11 @@
 
 
 ### Logros
- Todo lo pedido; actions para rubocop, los tests y simplecov. Subido a heroku y eso.
+  - Todo lo pedido salvo capybara; pasa rubocop, los tests y simplecov. Subido a heroku y eso.
 
 ### Consideraciones generales para la correcion
-
-### Se cambió el codigo de test_helper.rb porque no podía agregar más de 50 test
+  - La tabla de decisión es un pdf llamado 'tabla_de_decision.pdf' ubicado en la carpeta 'docs' en el root de la app.
+  - Se cambió el codigo de test_helper.rb porque no podía agregar más de 50 test:
 
 ```
 module ActiveSupport
@@ -23,4 +23,3 @@ module ActiveSupport
   end
 end
 ```
-
