@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   validates :cost, presence: true, allow_blank: false,
                    numericality: { only_integer: true, greater_than: 0,
                                    message: 'El costo debe ser mayor que 0' }
-  def set_type
-    raiser 'You must override this method in each model inheriting from Product!'
-  end
+
+  # raiser 'You must override this method in each model inheriting from Product!'
+  def set_type; end
 end
